@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: eaglercraft-server
+    env: docker
+    plan: free
+    # Tells Render to build the Dockerfile in the current directory
+    buildCommand: docker build -t eagler-server .
+    # Tells Render to run the command defined in the Dockerfile
+    startCommand: ./entrypoint.sh
+    envVars:
+      - key: PORT
+        value: 80
+    autoDeploy: true
